@@ -15,9 +15,11 @@ library(ggplot2)
 library(grid)
 library(robR)
 
+county_est=load("/opt/shiny-server/samples/sample-apps/codemog_data/county_est.rdata")
+
 pop=read_excel("County Compare Data.xlsx", sheet= "Population 90_14")[,-1]
 names(pop[,27])="ann_gr_90_14"
-countynames=codemog::county_est%>%
+countynames=county_est%>%
   filter(year==2014)%>%
   select(FIPS=countyfips, county)
 
